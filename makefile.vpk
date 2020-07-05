@@ -1,0 +1,5 @@
+
+
+
+all:
+			cd ../build && voc -s ../dps/postgres/src/postgres.Mod
