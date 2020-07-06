@@ -7,3 +7,4 @@ current_dir := $(notdir $(patsubst %/,%,$(dir $(mkfile_path))))
 all:
 			mkdir -p $(BUILD)
 			cd $(BUILD) && voc -s $(mkfile_dir_path)/src/postgres.Mod
+			cd $(BUILD) && voc -m $(mkfile_dir_path)/src/PostgresTests.Mod
