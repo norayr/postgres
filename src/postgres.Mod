@@ -1,10 +1,10 @@
 MODULE postgres;
 
-IMPORT Sys, Strings := oocStrings, Strings2 := oocStrings2, Out, pipes, StringList, strutils;
+IMPORT Strings := oocStrings, Strings2 := oocStrings2, Out, pipes, lDefs, StringList, strutils;
 
 VAR
-  user-, database-: Sys.string;
-  queryStr-: Sys.string;
+  user-, database-: lDefs.string;
+  queryStr-: lDefs.string;
 
 PROCEDURE setUser*(s: ARRAY OF CHAR);
 BEGIN
@@ -45,7 +45,7 @@ END constructQuery;
 PROCEDURE query*(VAR cmd: ARRAY OF CHAR): StringList.TStringList;
 VAR
   f: pipes.Text;
-  out: Sys.string;
+  out: lDefs.string;
   strs: StringList.TStringList;
   l : LONGINT;
 BEGIN
@@ -66,7 +66,7 @@ END query;
 PROCEDURE queryL*(VAR cmd, rsp: ARRAY OF CHAR);
 VAR
   f: pipes.Text;
-  out: Sys.string;
+  out: lDefs.string;
   strs: StringList.TStringList;
   e : StringList.Node;
   l : LONGINT;
@@ -82,7 +82,7 @@ BEGIN
   UNTIL f.eof;
   e := strs.Get(strs, l-3);
   IF e # NIL THEN
-    Strings.Assign( (e.obj(StringList.TString).str), rsp);
+    Strings.Assign((e.obj(StringList.TString).str^), rsp);
     strutils.RemoveLeftChars(rsp, ' ');
     strutils.RemoveRightChars(rsp, ' ');
     Out.String(rsp); Out.Ln
