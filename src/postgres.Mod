@@ -51,8 +51,8 @@ VAR
 BEGIN
   constructQuery(cmd);
   Out.String(queryStr); Out.Ln;
-  NEW(f);
   strs := StringList.Create();
+  f := pipes.NewText();
   pipes.Popen(f, queryStr, 'r');
   REPEAT
     pipes.ReadLine(f, out);
