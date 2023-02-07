@@ -1,4 +1,4 @@
-MODULE PostgresTests;
+MODULE postgresTests;
 
 IMPORT pipes, postgres, Out;
 
@@ -22,8 +22,7 @@ BEGIN
   Out.String(postgres.queryStr); Out.Ln;
 
   cmd := "ls -al";
-  NEW(f);
-  pipes.Popen(f, cmd, 'r');
+  f := pipes.Popen(cmd, 'r');
   REPEAT
     pipes.ReadLine(f, out);
     Out.String(out); Out.Ln;
@@ -52,4 +51,4 @@ BEGIN
   test0;
   test1;
   test2;
-END PostgresTests.
+END postgresTests.
