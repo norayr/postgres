@@ -52,8 +52,7 @@ BEGIN
   constructQuery(cmd);
   Out.String(queryStr); Out.Ln;
   strs := StringList.Create();
-  f := pipes.NewText();
-  pipes.Popen(f, queryStr, 'r');
+  f := pipes.Popen(queryStr, 'r');
   REPEAT
     pipes.ReadLine(f, out);
     strutils.RemoveLeftChars(out, ' ');
