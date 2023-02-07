@@ -6,8 +6,8 @@ current_dir := $(notdir $(patsubst %/,%,$(dir $(mkfile_path))))
 
 all:
 			mkdir -p $(BUILD)
-			cd $(BUILD) && voc -s $(mkfile_dir_path)/src/postgres.Mod
-			cd $(BUILD) && voc -m $(mkfile_dir_path)/src/PostgresTests.Mod
+			cd $(BUILD) && $(VOC) -s $(mkfile_dir_path)/src/postgres.Mod
+			cd $(BUILD) && $(VOC) -m $(mkfile_dir_path)/src/PostgresTests.Mod
 
 clean:
 			if [ -d "$(BUILD)" ]; then rm -rf $(BUILD); fi
