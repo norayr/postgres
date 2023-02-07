@@ -74,7 +74,7 @@ BEGIN
   Out.String(queryStr); Out.Ln;
   NEW(f);
   strs := StringList.Create();
-  pipes.Popen(f, queryStr, 'r');
+  f := pipes.Popen(queryStr, 'r');
   REPEAT
     pipes.ReadLine(f, out);
     l := strs.AddString(strs, out);
